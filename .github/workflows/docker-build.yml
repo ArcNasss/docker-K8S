@@ -1,0 +1,25 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+      - development
+  pull_request:
+    branches:
+      - main
+      - development
+
+jobs:
+  build-laravel-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Laravel app image
+        run: docker build -t laravel-app-test -f docker/php/Dockerfile .
+
+      - name: List Docker images
+        run: docker images
