@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        throw new Exception('Sengaja bikin CI gagal');
+
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            $table->unsignedBigInteger('subject_id');
             $table->timestamps();
         });
     }
